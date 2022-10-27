@@ -323,7 +323,6 @@
                 },
 
                 eventClick: function(event, data) {
-
                     var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                     var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
                     $(".modal").modal("show");
@@ -391,18 +390,16 @@
                         $("#staticBackdrop").modal('hide');
                     });
                     $("input").prop("readonly", false);
+
                 },
 
                 eventRender: function(event, element) {
-                    /*add onclick functionality here*/
                     element
                         .find(".fc-content")
                         .prepend(
                             "<span class='closeon material-icons' id='hide'><i class='ri-close-line'></i></span>"
                         );
                     element.find(".closeon").on("click", function() {
-
-                        $(".modal").modal("hide");
                         Swal.fire({
                             title: 'Are you sure?',
                             text: "You won't be able to revert this!",
@@ -420,9 +417,9 @@
                                         id: event.id,
                                         type: 'delete'
                                     },
-                                    success: function(response) {
-                                        calendar.fullCalendar(
-                                            'removeEvents', event.id);
+                                    success: function(data) {
+                                        $("#calendar").fullCalendar(
+                                            "removeEvents", event.id);
                                         Swal.fire(
                                             'Deleted!',
                                             'Event successfully deleted!.',
@@ -432,9 +429,9 @@
                                 });
                             }
                         })
-
                     });
                 }
+
             });
         });
     </script>
