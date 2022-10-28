@@ -24,8 +24,6 @@ Route::get('/users', function () {
     return User::all();
 });
 
-// Route::get('/categories', [CategoryController::class, 'all_categories']);
-// Route::get('/category/{category_slug}', [CategoryController::class, 'category_services']);
-// Route::get('/service/{service_slug}', [CategoryController::class, 'service']);
+
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
